@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<script language="JavaScript" type="text/javascript">
+			<!--
+			function init() {
+				fconsult.useService("http://localhost/Server/Service.asmx?WSDL", "webService", null);
+			}
+			
+			function getResult(value) {
+				fconsult.webService.callService(onResult, "Consult6", value);
+			}
+			
+			function onResult(result) {
+				if (!result.error) {
+					var html = "";
+					html += "<html>";
+					html += "<head>";
+					html += "<link href='style.css' rel='stylesheet' type='text/css'>";
+					html += "<head>";
+					html += "<body bgcolor='BUTTONFACE'>";
+					html += "<center>";
+					html += "<b>Consulta 6</b><br><br>";
+					html += "Especialidad: " + fconsult.tspec.value + "<br><br>";
+					html += "<table width='100%' border='1'>";
+					html += "<tr>";
+					html += "<th width='12%'>Nombre</th>";
+					html += "<th width='12%'>Apellido</th>";
+					html += "<th width='12%'>Cedula</th>";
+					html += "<th width='12%'>Direccion</th>";
+					html += "<th width='12%'>Departamento</th>";
+					html += "<th width='12%'>Especialidad</th>";
+					html += "<th width='12%'>Descripcion</th>";
+					html += "<th width='12%'>Saldo</th>";
+					html += "<th width='*'>&nbsp;</th>";
+					html += "</tr>";
+					var data = null;
+					for (i=0; i<result.value.length-1; i++) {
+						if (result.value[i] != "") {
+							data = result.value[i].split(",");
+						} else {
+							break;
+						}
+						html += "<tr>";
+						for (j=0; j<8; j++) {
+							if (data[j] != undefined) {
+								html += "<td width='12%'>";
+								html += data[j];
+								html += "</td>";
+							}
+						}
+						html += "<td width='*'>";
+						html += "&nbsp;";
+						html += "</td>";
+						html += "</tr>";
+					}
+					html += "</table>";
+					html += "</center>";
+					html += "</body>";
+					html += "</html>";
+					document.writeln(html);
+				} else {
+					window.alert("Especialidad no válida!");
+				}
+			}
+			-->
+		</script>
+	  <link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body bgcolor="BUTTONFACE" onload="init();">
+		<form action="#" method="get" name="fconsult" id="fconsult" target="_self">
+			<center>
+				<b>Consulta 6</b><br>
+				<br>
+				Especialidad:&nbsp;
+				<input type="text" name="tspec" id="tspec">
+				<input type="button" onClick="getResult(new Array(fconsult.tspec.value));" value="ver">
+			</center>
+		</form>
+	</body>
+</html>

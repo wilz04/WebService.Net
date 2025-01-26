@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<script language="JavaScript" type="text/javascript">
+			<!--
+			function init() {
+				fconsult.useService("http://localhost/Server/Service.asmx?WSDL", "webService", null);
+			}
+			
+			function getResult(value) {
+				fconsult.webService.callService(onResult, "Consult2", value);
+			}
+			
+			function onResult(result) {
+				if (!result.error) {
+					var html = "";
+					html += "<html>";
+					html += "<head>";
+					html += "<link href='style.css' rel='stylesheet' type='text/css'>";
+					html += "<head>";
+					html += "<body bgcolor='BUTTONFACE'>";
+					html += "<center>";
+					html += "<b>Consulta 2</b><br><br>";
+					html += "Id del examen: " + fconsult.tid.value + "<br><br>";
+					html += "<table width='100%' border='1'>";
+					html += "<tr>";
+					html += "<th width='16%'>Id</th>";
+					html += "<th width='16%'>Nombre</th>";
+					html += "<th width='16%'>Apellido</th>";
+					html += "<th width='16%'>Estado</th>";
+					html += "<th width='16%'>Id de examen</th>";
+					html += "<th width='16%'>Tipo</th>";
+					html += "<th width='*'>&nbsp;</th>";
+					html += "</tr>";
+					var data = null;
+					for (i=0; i<result.value.length-1; i++) {
+						if (result.value[i] != "") {
+							data = result.value[i].split(",");
+						} else {
+							break;
+						}
+						html += "<tr>";
+						for (j=0; j<6; j++) {
+							if (data[j] != undefined) {
+								html += "<td width='16%'>";
+								html += data[j];
+								html += "</td>";
+							}
+						}
+						html += "<td width='*'>";
+						html += "&nbsp;";
+						html += "</td>";
+						html += "</tr>";
+					}
+					html += "</table>";
+					html += "</center>";
+					html += "</body>";
+					html += "</html>";
+					document.writeln(html);
+				} else {
+					window.alert("Id no válido!");
+				}
+			}
+			-->
+		</script>
+	  <link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body bgcolor="BUTTONFACE" onload="init();">
+		<form action="#" method="get" name="fconsult" id="fconsult" target="_self">
+			<center>
+				<b>Consulta 2</b><br>
+				<br>
+				Id del examen:&nbsp;
+				<input type="text" name="tid" id="tid">
+				<input type="button" onClick="getResult(new Array(fconsult.tid.value));" value="ver">
+			</center>
+		</form>
+	</body>
+</html>

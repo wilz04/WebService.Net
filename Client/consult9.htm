@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<script language="JavaScript" type="text/javascript">
+			<!--
+			function init() {
+				fconsult.useService("http://localhost/Server/Service.asmx?WSDL", "webService", null);
+			}
+			
+			function getResult(value) {
+				fconsult.webService.callService(onResult, "Consult9", value);
+			}
+			
+			function onResult(result) {
+				if (!result.error) {
+					var html = "";
+					html += "<html>";
+					html += "<head>";
+					html += "<link href='style.css' rel='stylesheet' type='text/css'>";
+					html += "<head>";
+					html += "<body bgcolor='BUTTONFACE'>";
+					html += "<center>";
+					html += "<b>Consulta 9</b><br><br>";
+					html += "Cuarto: " + fconsult.troom.value + "<br><br>";
+					html += "<table width='100%' border='1'>";
+					html += "<tr>";
+					html += "<th width='12%'>Equipo</th>";
+					html += "<th width='12%'>Descripcion</th>";
+					html += "<th width='12%'>Cuarto</th>";
+					html += "<th width='12%'>Estado</th>";
+					html += "<th width='12%'>Disponibilidad</th>";
+					html += "<th width='12%'>Cantidad</th>";
+					html += "<th width='12%'>Fecha</th>";
+					html += "<th width='12%'>Costo</th>";
+					html += "<th width='*'>&nbsp;</th>";
+					html += "</tr>";
+					var data = null;
+					for (i=0; i<result.value.length-1; i++) {
+						if (result.value[i] != "") {
+							data = result.value[i].split(",");
+						} else {
+							break;
+						}
+						html += "<tr>";
+						for (j=0; j<8; j++) {
+							if (data[j] != undefined) {
+								html += "<td width='12%'>";
+								html += data[j];
+								html += "</td>";
+							}
+						}
+						html += "<td width='*'>";
+						html += "&nbsp;";
+						html += "</td>";
+						html += "</tr>";
+					}
+					html += "</table>";
+					html += "</center>";
+					html += "</body>";
+					html += "</html>";
+					document.writeln(html);
+				} else {
+					window.alert("Cuarto no válido!");
+				}
+			}
+			-->
+		</script>
+	  <link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body bgcolor="BUTTONFACE" onload="init();">
+		<form action="#" method="get" name="fconsult" id="fconsult" target="_self">
+			<center>
+				<b>Consulta 9</b><br>
+				<br>
+				Cuarto:&nbsp;
+				<input type="text" name="troom" id="troom">
+				<input type="button" onClick="getResult(new Array(fconsult.troom.value));" value="ver">
+			</center>
+		</form>
+	</body>
+</html>
